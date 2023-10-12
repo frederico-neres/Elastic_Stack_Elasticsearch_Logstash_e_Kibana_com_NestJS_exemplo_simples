@@ -1,8 +1,9 @@
 import { Address } from "src/domain/Address";
 import { IAddressExternalClient } from "src/port/IAddressExternalClient";
+import { ICheckStateAllowedForSalesUsecase } from "src/port/ICheckStateAllowedForSalesUsecase";
 import { Logger } from "winston";
 
-export class CheckStateAllowedForSalesUsecase {
+export class CheckStateAllowedForSalesUsecase implements ICheckStateAllowedForSalesUsecase {
     
     constructor(
         private iAddressExternalClient :IAddressExternalClient,
