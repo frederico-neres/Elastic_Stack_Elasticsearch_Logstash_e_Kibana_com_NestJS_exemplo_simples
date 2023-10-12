@@ -1,4 +1,3 @@
-import { getLogger } from "src/configuration/logger";
 import { Logger } from "winston";
 
 const STATES_ALLOWED_FOR_SALE: Array<string> = ['SP', 'MG', 'SC']
@@ -10,9 +9,7 @@ export class Address {
         private localidade: string,
         private uf: string,
         private logger: Logger
-    ) {
-      this.logger = getLogger();
-    }
+    ) {}
 
     checkPermittedState(): boolean {
         if(STATES_ALLOWED_FOR_SALE.includes(this.uf)) {
