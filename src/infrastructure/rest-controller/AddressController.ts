@@ -12,10 +12,14 @@ export class AddressController {
   ) {}
 
   @Get("/zip-code/:zipcode/allowed")
-  async checkStateAllowedForSales(@Param("zipcode") zipcode: string): Promise<boolean> {
+  async checkStateAllowedForSales(@Param("zipcode") zipcode: string): Promise<StateAllowedResponse> {
     this.logger.info("[checkStateAllowedForSales] starting controller");
     let isAllowed: boolean = await this.iCheckStateAllowedForSalesUsecase.check(zipcode);
     this.logger.info("[checkStateAllowedForSales] finishing controller");
-    return isAllowed;
+    return new StateAllowedResponse(isAllowed);
   }
+}
+
+class StateAllowedResponse {
+    constructor(public isAllowed: boolean) {}
 }

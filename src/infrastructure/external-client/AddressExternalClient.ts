@@ -35,7 +35,7 @@ export class AddressExternalClient implements IAddressExternalClient {
         let url = getAddressExternalClientUrl(zipCode);
         let addr: AddressResponse;
 
-        this.logger.info("Initiate a call to an external customer to search for an address by zip code");
+        this.logger.info("Initiate a call to an external client to search for an address by zip code");
         await axios.get(url)
         .then(function (response) {
             let data = response['data'];
@@ -50,7 +50,7 @@ export class AddressExternalClient implements IAddressExternalClient {
             throw new Error("zip code not found");
         })
         
-        this.logger.info("Ended call to external customer to search for address by zip code");
+        this.logger.info("Ended call to external client to search for address by zip code");
         return addr.toDomain(this.logger);
     }
 }
